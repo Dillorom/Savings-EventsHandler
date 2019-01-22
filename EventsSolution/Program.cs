@@ -29,24 +29,24 @@ namespace EventsSolution
     }
 
 
-    class BalanceLogger
-    {
-        public void balanceLog(decimal amount)
-        {
-            Console.WriteLine($"The balance amount is {amount}");
-        }
-    }
+    //class BalanceLogger
+    //{
+    //    public void balanceLog(decimal amount)
+    //    {
+    //        Console.WriteLine($"The balance amount is {amount}");
+    //    }
+    //}
 
-    class BalanceWatcher
-    {
-        public void balanceWatch(decimal amount)
-        {
-            if (amount > 1000m)
-            {
-                Console.WriteLine($"You reached your savings goal! You have {amount}");
-            }
-        }
-    }
+    //class BalanceWatcher
+    //{
+    //    public void balanceWatch(decimal amount)
+    //    {
+    //        if (amount > 1000m)
+    //        {
+    //            Console.WriteLine($"You reached your savings goal! You have {amount}");
+    //        }
+    //    }
+    //}
 
     
     class Program
@@ -54,12 +54,12 @@ namespace EventsSolution
         static void Main(string[] args)
         {
             Savings savings = new Savings();
-            BalanceLogger bl = new BalanceLogger();
-            BalanceWatcher bw = new BalanceWatcher();
+            //BalanceLogger bl = new BalanceLogger();
+            //BalanceWatcher bw = new BalanceWatcher();
 
-            savings.balanceChanged += bl.balanceLog;
-            savings.balanceChanged += bw.balanceWatch;
-
+            savings.balanceChanged += (amount) => Console.WriteLine($"The balance amount is {amount}");
+            savings.balanceChanged += (amount) => { if (amount > 1000m) Console.WriteLine($"You reached your savings goal! You have {amount}.")};
+   
             string input;
             do {
                 Console.WriteLine("How much to deposit?");
